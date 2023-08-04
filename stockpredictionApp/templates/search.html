@@ -1,4 +1,4 @@
-{ % load static %}
+{ % load static  %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="icon" href="{% static 'image/dollar_icon.png' %}">
+    <!-- <link rel="icon" href="{% static 'image/dollar_icon.png' %}"> -->
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -60,17 +60,17 @@
             </nav>
         </div>
         <!-- Sidebar End -->
-        <!-- Content Start -->
+
+
         <div class="content">
             <!-- Navbar Start -->
-            <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
+            <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">  
                 <a href="../" class="navbar-brand d-flex d-lg-none me-4">
                     <h2 class="text-primary mb-0"><i class="fa fa-user-edit"></i></h2>
-                </a>
+                </a>    
                 <a href="#" class="sidebar-toggler flex-shrink-0">
                     <i class="fa fa-bars"></i>
-                </a>
-                
+                </a> 
                 <div class="navbar-nav align-items-center ms-auto">
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
@@ -84,70 +84,42 @@
                     </div>
                 </div>
             </nav>
-            <!-- Navbar End -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="bg-secondary text-center rounded p-4">
-                    <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">All Tickers</h6>
-                        <a href="https://finance.yahoo.com/trending-tickers">Show All</a>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table text-start align-middle table-bordered table-hover mb-0">
-                            <thead>
-                                <tr class="text-white">
-                                    <th scope="col">Ticker Symbol</th>
-                                    <th scope="col">Ticker Name</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% if ticker_list %}
-                                {% for i in ticker_list %}
-                                <tr>
-                                    <td>{{i.Symbol}}</td>
-                                    <td>{{i.Name}}</td>
-                                </tr>
-                                {% endfor %}
-                                {% endif %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="container-fluid pt-4 px-4">
-                <div class="bg-secondary rounded-top p-4">
-                    <div class="row">
-                        <div class="col-12 col-sm-6 text-center text-sm-start">
-                            &copy; <a href="#"> BD Stock Apps </a>, All Right Reserved. 
-                        </div>
-                        <div class="col-12 col-sm-6 text-center text-sm-end">
-                            Develop By <a href="/">Moinuddin Kamal</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Footer End -->
-        </div>
-        <!-- Content End -->
 
+            <div class="container-fluid">
+                <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
+                    <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+                        <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
+                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                <a href="../" class="">
+                                    <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>Stock Market Predictor</h3>
+                                </a>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control id=tickerinp" placeholder="Ticker Name " name="ticker" autocomplete="on" required>
+                                <label for="tickerinp">Ticker Name</label>
 
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-    </div>
+                             </div>
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{% static 'lib/chart/chart.min.js' %}"></script>
-    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
-    <script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
-    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
-    <script src="{% static 'lib/tempusdominus/js/moment.min.js' %}"></script>
-    <script src="{% static 'lib/tempusdominus/js/moment-timezone.min.js' %}"></script>
-    <script src="{% static 'lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+                             <div class="form-floating mb-4">
+                                <input type="text" class="form-control" id="days" placeholder="Number Of days " autocomplete="on" required>
+                                <label for="days">Number Of Days</label>
 
-    <!-- Template Javascript -->
-    <script src="{% static 'js/main.js' %}"></script>
-    </div>
-    
-</body>
-</html>
+                             </div>
+                             <div class="d-flex align-items-center justify-content-between mb-4">
+                                <a href="../ticker"> Search Ticker Value </a>
+
+                             </div>
+
+                             <button type="submit" class="btn btn-primary py-3 w-100 mb-4 " onclick="" >Predict</button>
+                             <script type="text/javascript">
+                                function LoadURL() {
+                                    var ticker = document.getElementById("tickerinp").value;
+                                    var days = document.getElementById("days").value;
+                                    var server = window.location.origin;
+                                    var path = "/predict/" + ticker + "/" +days;
+                                    var url = server + path;
+                                    window.location.href = url ;
+
+                                }
+                             </script>
+             </div>

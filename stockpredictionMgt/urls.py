@@ -19,4 +19,8 @@ from django.urls import path,include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('stockpredictionApp/',include("stockpredictionApp.urls")),
+    # path('', index),
+    # path('search/', search),
+    # path('predict/<str:ticker_value>/<str:number_of_days>/', predict),
+    # path('ticker/', ticker),
 ]
