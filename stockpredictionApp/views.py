@@ -105,7 +105,7 @@ def search(request):
 
 def ticker (request):
     ticker_df = pd.read_csv('stockpredictionApp/Data/new_tickers.csv')
-    json_ticker = ticker_df.reset_index().to_csv(orient='records')
+    json_ticker = ticker_df.reset_index().to_json(orient='records')
     ticker_list = []
     ticker_list = json.loads(json_ticker)
 
